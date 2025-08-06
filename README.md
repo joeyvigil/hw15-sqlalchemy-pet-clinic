@@ -25,19 +25,14 @@ Create a simplified pet clinic management system with the following entities:
 #### Core Models:
 
 1.  Pet - Contains pet information (name, species, breed, age)
-
 2.  Owner - Contains pet owner information (name, phone, email)
-
 3.  Veterinarian - Contains veterinarian information (name, specialization)
-
 4.  Appointment - Contains appointment information (date, notes, status)
 
 #### Relationships:
 
 -   Pets ↔ Owners: Many-to-one (multiple pets can belong to one owner)
-
 -   Pets ↔ Veterinarians: Many-to-many (pets can see multiple vets, vets can treat multiple pets)
-
 -   Appointments: Connect pets, veterinarians, and appointment details (Junction Table between Pet and Vet)
 
 Set Up
@@ -79,70 +74,48 @@ Models to implement:
 
 1.  Owner Model with:
 
--   id (primary key)
+    -   id (primary key)
+    -   name (string, not null)
+    -   phone (string, not null)
+    -   email (string, unique)
+    -   Relationship to pets
 
--   name (string, not null)
+2.  Pet Model with:
 
--   phone (string, not null)
+    -   id (primary key)
+    -   name (string, not null)
+    -   species (string, not null) - e.g., "Dog", "Cat", "Bird"
+    -   breed (string)
+    -   age (integer)
+    -   owner_id (foreign key to owners)
+    -   Relationships to owner, veterinarians, and appointments (if you do the association model)
 
--   email (string, unique)
+3.  Veterinarian Model with:
 
--   Relationship to pets
+    -   id (primary key)
+    -   name (string, not null)
+    -   specialization (string) - e.g., "General", "Surgery", "Dermatology"
+    -   email (string, unique)
+    -   Relationships to pets and appointments (if you do the association model)
 
-3.  Pet Model with:
-
--   id (primary key)
-
--   name (string, not null)
-
--   species (string, not null) - e.g., "Dog", "Cat", "Bird"
-
--   breed (string)
-
--   age (integer)
-
--   owner_id (foreign key to owners)
-
--   Relationships to owner, veterinarians, and appointments (if you do the association model)
-
-5.  Veterinarian Model with:
-
--   id (primary key)
-
--   name (string, not null)
-
--   specialization (string) - e.g., "General", "Surgery", "Dermatology"
-
--   email (string, unique)
-
--   Relationships to pets and appointments (if you do the association model)
-
-7.  Appointment Junction Table :\
+4.  Appointment Junction Table :\
     Either Simple Table object connecting Pet and Vet ids\
     or Association Model with the following fields
 
--   id (primary key)
-
--   pet_id (foreign key to pets)
-
--   veterinarian_id (foreign key to veterinarians)
-
--   appointment_date (datetime, not null)
-
--   notes (text)
-
--   status (string, default "Scheduled") - "Scheduled", "Completed", "Cancelled"
-
--   Relationships to pet and veterinarian
+    -   id (primary key)
+    -   pet_id (foreign key to pets)
+    -   veterinarian_id (foreign key to veterinarians)
+    -   appointment_date (datetime, not null)
+    -   notes (text)
+    -   status (string, default "Scheduled") - "Scheduled", "Completed", "Cancelled"
+    -   Relationships to pet and veterinarian
 
 #### 2.3 Database Setup
 
 Create a function to:
 
 -   Set up the database engine
-
 -   Create all tables
-
 -   Return a session factory
 
 ### Part 3: Database Population
@@ -152,19 +125,13 @@ Add sample data to your database using SQLAlchemy session operations. You should
 Requirements:
 
 -   Add at least 3 owners with different contact information
-
 -   Add at least 6 pets (mix of dogs, cats, birds) belonging to different owners
-
 -   Add at least 2 veterinarians with different specializations
-
 -   Create appointments connecting pets and veterinarians
-
 -   Demonstrate both many-to-one and many-to-many relationships
 
 Tips:
 
 -   Use session.add() for individual objects or session.add_all() for multiple objects
-
 -   Remember to call session.commit() to save your changes
-
 -   Make sure your relationships are properly set up before adding data

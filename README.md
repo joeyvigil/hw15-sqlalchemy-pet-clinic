@@ -1,9 +1,7 @@
 # hw15-sqlalchemy-pet-clinic
---------
 
 This homework assignment will test your understanding of database relationships and SQLAlchemy ORM. You'll build a Pet Clinic Management System that demonstrates both association tables and association models.
 
-* * * * *
 
 Learning Objectives
 -------------------
@@ -16,7 +14,6 @@ By completing this homework, you will:
 
 -   Use modern SQLAlchemy 2.0 syntax with Mapped and mapped_column
 
-* * * * *
 
 Assignment: Pet Clinic Management System
 ----------------------------------------

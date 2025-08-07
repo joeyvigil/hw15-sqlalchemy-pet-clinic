@@ -21,7 +21,7 @@ Process using sqlacodegen
 5. Fix any errors and make it more consistant with class examples
     - add any needed imports
     - ```class Base(DeclarativeBase): ----> Base = declarative_base(); engine = create_engine('sqlite:///clinic.db')```
-    - ```    Base.metadata.create_all(bind=engine) #Add after Classes```
+    - ```Base.metadata.create_all(bind=engine) #Add after Classes```
     - fix anything that is causing errors (datetime and primary keys)
 6. Create and manipulate data as final part of assignment
 

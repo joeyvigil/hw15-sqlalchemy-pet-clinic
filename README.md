@@ -1,6 +1,6 @@
 # hw15-sqlalchemy-pet-clinic
 
-Process using sqlacodegen
+Process Using sqlacodegen
 -------------------
 1. Setup virtual environment, pip installs, freeze requirements
     ```shell

@@ -1,7 +1,36 @@
 # hw15-sqlalchemy-pet-clinic
 
-This homework assignment will test your understanding of database relationships and SQLAlchemy ORM. You'll build a Pet Clinic Management System that demonstrates both association tables and association models.
+Process using sqlacodegen
+-------------------
+1. Setup virtual environment, pip installs, freeze requirements
+    ```shell
+    python -m venv venv
+    venv\Scripts\activate
 
+    pip install sqlalchemy
+    pip install sqlacodegen
+
+    pip freeze > requirements.txt
+    ```
+2. Create new file named 'model.db'
+3. Create new file named 'model.sql', add CREATE statements to it, run it in 'model.db'
+4. Use sqlacodegen to generate bulk of code, this is much less error prone and more consistent then writing yourself
+    ```shell
+    sqlacodegen sqlite:///model.db
+    ```
+5. Fix any errors and make it more consistant with class examples
+    - add any needed imports
+    - ```class Base(DeclarativeBase): ----> Base = declarative_base(); engine = create_engine('sqlite:///clinic.db')```
+    - ```    Base.metadata.create_all(bind=engine) #Add after Classes```
+    - fix anything that is causing errors (datetime and primary keys)
+6. Create and manipulate data as final part of assignment
+
+
+
+Overview
+-------------------
+
+This homework assignment will test your understanding of database relationships and SQLAlchemy ORM. You'll build a Pet Clinic Management System that demonstrates both association tables and association models.
 
 Learning Objectives
 -------------------
